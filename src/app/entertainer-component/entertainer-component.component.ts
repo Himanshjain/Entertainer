@@ -16,16 +16,19 @@ export class EntertainerComponentComponent {
   constructor(private fb: FormBuilder) {
     this.personForm = this.fb.group({
       name: ['', Validators.required],
-      age: ['', Validators.required],
+      age: [''],
       gender: ['', Validators.required],
-      height: ['', Validators.required],
-      weight: ['', Validators.required],
+      height: [''],
+      weight: [''],
       bio: [''],
       birthdate: [''],
       nationality: [''],
-      image: ['']
+      image: [''],
+      profession1:['', Validators.required],
+      profession2:[''],
     });
   }
+
 
 
   onSubmit()
@@ -168,6 +171,8 @@ export class EntertainerComponentComponent {
     "Mocap Supervisor"
   ]
     
-  
-
+ 
 }
+
+
+
