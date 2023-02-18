@@ -24,35 +24,36 @@
     </div>
 
 
-   <div class="container">
-  <div class="row">
-    <div class="col">
-      <div class="row">
-        <div class="col-2  mb-3 mx-3" *ngFor="let card of userInformationList">
-            <div class="container mx-auto mt-4">
+    <div class="container">
+        <div class="row">
+            <div class="col">
                 <div class="row">
-                  <div class="col-md-4">
-                    <div class="card" style="width: 18rem;">
-                <img src="https://i.imgur.com/ZTkt4I5.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">{{card.Name}} ({{card.age}})</h5>
-                      <h6 class="card-subtitle mb-2 text-muted">{{card.profession1}} , {{card.profession2}}</h6>
-                  <p class="card-text">{{card.nationality}} <br>
-                     {{card.height}} Feet, {{card.weight}} kg</p>
-                  <p class="card-text">{{card.bio}}</p>
-                     <a href={{card.image}} class="btn mr-2"><i class="fas fa-link"></i>Go to Instagram Profile</a>
+                    <div class="col-2  mb-3 mx-3" *ngFor="let card of userInformationList">
+                        <div class="container mx-auto mt-4">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="card" style="width: 18rem;">
+                                        <img src={{card.profilephotolink}}
+                                            crossorigin="anonymous" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{card.Name}} ({{card.age}})</h5>
+                                            <h6 class="card-subtitle mb-2 text-muted">{{card.profession1}} ,
+                                                {{card.profession2}}</h6>
+                                            <p class="card-text">{{card.nationality}} <br>
+                                                {{card.height}} Feet, {{card.weight}} kg</p>
+                                            <p class="card-text">{{card.bio}}</p>
+                                            <a href={{card.instaprofile}} class="btn mr-2"><i
+                                                    class="fas fa-link"></i>Go to Instagram Profile</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                </div>
-                  </div>  
-                </div> 
             </div>
         </div>
-      </div>
     </div>
-  </div>
-</div>
-
-
 
 
 </body>
@@ -81,25 +82,35 @@
                             </div>
                             <div class="col">
                                 <div class="form-group">
-                                    <label for="age" class="form-label">Age:</label>
-                                    <input type="number" id="age" class="form-control" formControlName="age" required>
-                                    <div class="invalid-feedback">Please enter a valid age.</div>
+                                    <label for="name" class="form-label">Email:</label>
+                                    <input type="text" id="name" class="form-control" formControlName="email" required>
+                                    <div class="invalid-feedback">Please enter a valid Email.</div>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="form-group">
-                                    <label for="gender" class="form-label">Gender:</label>
-                                    <select id="gender" class="form-select" formControlName="gender" required>
-                                        <option value="">-- Select Gender --</option>
-                                        <option value="male">Male</option>
-                                        <option value="female">Female</option>
-                                        <option value="other">Other</option>
-                                    </select>
-                                    <div class="invalid-feedback">Please select a gender.</div>
+                                    <label for="name" class="form-label">Password :</label>
+                                    <input type="password" id="name" class="form-control" formControlName="password"
+                                        required>
+                                    <div class="invalid-feedback">Please enter a Password</div>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
+                            <div class="col">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="gender" class="form-label">Gender:</label>
+                                        <select id="gender" class="form-select" formControlName="gender" required>
+                                            <option value="">Gender</option>
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                        <div class="invalid-feedback">Please select a gender.</div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="col">
                                 <div class="form-group">
                                     <label for="height" class="form-label">Height:</label>
@@ -118,10 +129,9 @@
                             </div>
                             <div class="col">
                                 <div class="form-group">
-                                    <label for="birthdate" class="form-label">Birthdate:</label>
-                                    <input type="date" id="birthdate" class="form-control" formControlName="birthdate"
-                                        required>
-                                    <div class="invalid-feedback">Please enter a valid birthdate.</div>
+                                    <label for="age" class="form-label">Age:</label>
+                                    <input type="number" id="age" class="form-control" formControlName="age" required>
+                                    <div class="invalid-feedback">Please enter a valid age.</div>
                                 </div>
                             </div>
                         </div>
@@ -137,10 +147,18 @@
                                 required>
                             <div class="invalid-feedback">Please enter a valid nationality.</div>
                         </div>
-                        <div class="form-group">
-                            <label for="image" class="form-label">Instagram Profile URL:</label>
-                            <input type="text" id="image" class="form-control" formControlName="image" required>
-                            <div class="invalid-feedback">Please enter a valid image URL.</div>
+                        <div class="row">
+                            <div class="col"> <div class="form-group">
+                                <label for="image" class="form-label">Instagram Profile URL:</label>
+                                <input type="text" id="image" class="form-control" formControlName="image" required>
+                                <div class="invalid-feedback">Please enter a valid image URL.</div>
+                            </div></div>
+                            <div class="col">    
+                                <div class="form-group">
+                                <label for="image" class="form-label">Profile Photo URL:</label>
+                                <input type="text" id="image" class="form-control" formControlName="profilephotolink" required>
+                                <div class="invalid-feedback">Please enter a valid image URL.</div>
+                            </div></div>
                         </div>
                         <div class="row">
                             <div class="col">

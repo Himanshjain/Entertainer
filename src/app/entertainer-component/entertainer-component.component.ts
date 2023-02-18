@@ -1,6 +1,8 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { UserInfo } from 'src/models/UserInfo-model';
 
 @Component({
@@ -14,7 +16,7 @@ export class EntertainerComponentComponent {
   userInformationList: Array<UserInfo> = [];
   personForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder , private http: HttpClient) {
 
     if (localStorage.getItem('UserInfoList') !== null) {
       try {
@@ -27,6 +29,7 @@ export class EntertainerComponentComponent {
     } else {
       // if 'UserInfoList' doesn't exist in localStorage, set it to an empty array
       localStorage.setItem('UserInfoList', JSON.stringify(this.userInformationList));
+      localStorage.setItem('UserInfoList','[{"id":"","Name":"Himansh","age":26,"gender":"male","height":"5.11","weight":"68","bio":"Creator of Entertainer.com","nationality":"Indian","instaprofile":"https://www.instagram.com/himonshh/","profession1":"Software Developer","profession2":"Full stack Developer","email":"him2696@gmail.com","password":"admin","profilephotolink":"https://lh3.googleusercontent.com/pw/AMWts8Bqclv5Q94X__3xbKFhHUspfXohsC-11ctQXFepnPhBXNBM04st0Vqe6SzdycNXCcl6yV3MaEKtjX0JEfQcBYbI1X7TB9d2Hxo2jxkQu5MLVqoLxc4w9v-c-tDhyXsR4M7beD5WEefpr4neQ2G7iaxNbg=w522-h695-no"}]')
     }
 
     this.personForm = this.fb.group({
@@ -36,11 +39,13 @@ export class EntertainerComponentComponent {
       height: [''],
       weight: [''],
       bio: [''],
-      birthdate: [''],
       nationality: [''],
       image: [''],
       profession1: ['', Validators.required],
       profession2: [''],
+      email: [''],
+      password : [''],
+      profilephotolink : [''],
     });
   }
 
@@ -56,11 +61,15 @@ export class EntertainerComponentComponent {
       weight: this.personForm.controls['weight'].value,
       bio: this.personForm.controls['bio'].value,
       nationality: this.personForm.controls['nationality'].value,
-      image: this.personForm.controls['image'].value,
+      instaprofile: this.personForm.controls['image'].value,
       profession1: this.personForm.controls['profession1'].value,
-      profession2: this.personForm.controls['profession2'].value
+      profession2: this.personForm.controls['profession2'].value,
+      email :  this.personForm.controls['email'].value,
+      password :  this.personForm.controls['password'].value,
+      profilephotolink : this.personForm.controls['profilephotolink'].value
     }
    
+
     this.userInformationList.push(this.userInformation);
     localStorage.setItem('UserInfoList', JSON.stringify(this.userInformationList));
     this.userInformationList = JSON.parse(localStorage.getItem('UserInfoList') || '{}');
@@ -78,6 +87,10 @@ export class EntertainerComponentComponent {
     "Casting Director",
     "Choreographer",
     "Cinematographer",
+    "Software Developer",
+    "Web Developer",
+    "UI Developer",
+    "Full stack Developer",
     "Clapper Loader",
     "Colorist",
     "Composer",
@@ -205,6 +218,7 @@ export class EntertainerComponentComponent {
 
 
 }
+
 
 
 
