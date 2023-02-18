@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {FormsModule,ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserInfo } from 'src/models/UserInfo-model';
 
 @Component({
@@ -10,10 +10,25 @@ import { UserInfo } from 'src/models/UserInfo-model';
 })
 export class EntertainerComponentComponent {
 
- 
-  personForm: FormGroup; 
+  userInformation!: UserInfo; 
+  userInformationList: Array<UserInfo> = [];
+  personForm: FormGroup;
 
   constructor(private fb: FormBuilder) {
+
+    if (localStorage.getItem('UserInfoList') !== null) {
+      try {
+        // parse the value retrieved from localStorage and store it in userInformationList
+        this.userInformationList = JSON.parse(localStorage.getItem('UserInfoList') || '{}');
+      } catch (e) {
+        console.error('Error parsing user information list from localStorage:', e);
+        // handle the error as appropriate
+      }
+    } else {
+      // if 'UserInfoList' doesn't exist in localStorage, set it to an empty array
+      localStorage.setItem('UserInfoList', JSON.stringify(this.userInformationList));
+    }
+
     this.personForm = this.fb.group({
       name: ['', Validators.required],
       age: [''],
@@ -24,20 +39,36 @@ export class EntertainerComponentComponent {
       birthdate: [''],
       nationality: [''],
       image: [''],
-      profession1:['', Validators.required],
-      profession2:[''],
+      profession1: ['', Validators.required],
+      profession2: [''],
     });
   }
 
 
 
-  onSubmit()
-  {
-
+  onSubmit() {
+    this.userInformation = {
+      id:'',
+      Name: this.personForm.controls['name'].value,
+      age: this.personForm.controls['age'].value,
+      gender: this.personForm.controls['gender'].value,
+      height: this.personForm.controls['height'].value,
+      weight: this.personForm.controls['weight'].value,
+      bio: this.personForm.controls['bio'].value,
+      nationality: this.personForm.controls['nationality'].value,
+      image: this.personForm.controls['image'].value,
+      profession1: this.personForm.controls['profession1'].value,
+      profession2: this.personForm.controls['profession2'].value
+    }
+   
+    this.userInformationList.push(this.userInformation);
+    localStorage.setItem('UserInfoList', JSON.stringify(this.userInformationList));
+    this.userInformationList = JSON.parse(localStorage.getItem('UserInfoList') || '{}');
+    
   }
+  
 
-
-    profession: string[] = [
+  profession: string[] = [
     "Actor",
     "Actress",
     "Art Director",
@@ -168,10 +199,11 @@ export class EntertainerComponentComponent {
     "Marine Coordinator",
     "Media Archivist",
     "Mix Technician",
-    "Mocap Supervisor"
+    "Mocap Supervisor",
+    "Background Dancer"
   ]
-    
- 
+
+
 }
 
 
