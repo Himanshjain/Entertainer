@@ -18,3 +18,13 @@
     height: 300px;
     object-fit: cover;
   }
+
+  .card {
+    margin: 5px;
+  }
+
+  button{
+    margin: 2px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }

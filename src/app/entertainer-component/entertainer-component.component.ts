@@ -12,11 +12,11 @@ import { UserInfo } from 'src/models/UserInfo-model';
 })
 export class EntertainerComponentComponent {
 
-  userInformation!: UserInfo; 
+  userInformation!: UserInfo;
   userInformationList: Array<UserInfo> = [];
   personForm: FormGroup;
 
-  constructor(private fb: FormBuilder , private http: HttpClient) {
+  constructor(private fb: FormBuilder, private http: HttpClient) {
 
     if (localStorage.getItem('UserInfoList') !== null) {
       try {
@@ -29,7 +29,7 @@ export class EntertainerComponentComponent {
     } else {
       // if 'UserInfoList' doesn't exist in localStorage, set it to an empty array
       localStorage.setItem('UserInfoList', JSON.stringify(this.userInformationList));
-      localStorage.setItem('UserInfoList','[{"id":"","Name":"Neha Dugar","age":26,"gender":"female","height":"5.2","weight":"48","bio":"Software Engineer","nationality":"Indian","instaprofile":"https://www.instagram.com/nehadugar17/","profession1":"Software Developer","profession2":"","email":"nehadugar17@gmail.com","password":"admin","profilephotolink":"https://lh3.googleusercontent.com/pw/AMWts8B9daw6MVuBLB_IHVgvyV16JL0jHqqj38_7RbTQjIstTOe6RmmkamR-ScosF_EIRalnHM5qKqm23CNMaKEE-vsOBAL5LQmKYq0aX3R87MFqZqJ6-l_xtRXXoP_qOxJFErILo1S9FpbpICBtfORqsEfMQw=w524-h695-s-no?authuser=0"},{"id":"","Name":"Himansh","age":26,"gender":"male","height":"5.10","weight":"68","bio":"Technology Analyst","nationality":"Indian","instaprofile":"https://www.instagram.com/himonshh/","profession1":"Software Developer","profession2":"","email":"him2696@gmail.com","password":"admin","profilephotolink":"https://lh3.googleusercontent.com/G43ORT6aUsmc6kH--sq8jkEp25kcHyHpQWrCbtvd48WvmT__SGHDWTeaNI5sgzZY45JsNeruIvm4gG5SyiuMfNoTzgJ87FGJi3BfRRa8MMwLGsge_lSqFq2Yem2Hpabr7E9ZvY0LQcQLHZCGHA719usP7IARFAjC5x3fkpCdrf8sHNFHplUcY4SMtblQqZsw9XSpZrxrjKAQDljvrRKptB0ZpgFlitXqGW6dKI91KlaGyk4NwOZ0f3p7rK4E-gPJdrWWsqayGTFU46lFYzytbL59wl0RCoLMPTTDurnlkuuZ7ZMbnUMsGUrrfxDPwfs3wu0iU8l_G-ttp7eDHAiPApWynWd-9Qt5IUKGZ4K_p4OmU3HKKvpDzsjd3bJZJpOPBGwDCNqXt-rhdhbMDyghaUAYqutwRJv8iKQhlSIoZXeSZ24Afd3X8e41Zhm21_I6CZhnWVXsn0nmifoEzahtXt7rCt1XhTYGfzqbw8pwylHt23yS1vTELjrda45iGE-aWD2Z2D385dcpCqcHvtzQYsok0xDdABTDCMUYLsh3elPl7K8cpqiRbh-YFlamYaSsdVOn-cr4LLtbIvM2eyvvBOB5Yn-0KJraRvxeBXiVZj6C8O-iiP3_SqqO6Aqzgw_8HqvHr3eb3a705EEZgHojApPqNYmeMO3ZSMhypcAVHWdY3Frv-h4-7BTVpUE18q-q7UDvvhn_5fslHWWvjfHt0kS3i1VOoF9U4_INB36Yhjyve3uYfLOKCXG2JwF_y2FCD-HziG3gujMWO82VboHBnFZA6uA47mFuW1ElduSuNPFM3Otj6MG0m-I2e8TAu1r32vWUjpz2c0kTiEJ2AWfRirEu8OrNESE73-n_eSjWNy-YNPrDaOI7xay_zRM9eC1zdzQ0EUdz75GHgY02rGhRFlLF-Z9l_LKK1iLr00cJHfA9S1-t=w521-h695-s-no?authuser=0"}]')
+      localStorage.setItem('UserInfoList', '[{"id":"","Name":"Neha Dugar","age":26,"gender":"female","height":"5.2","weight":"48","bio":"Software Engineer","nationality":"Indian","instaprofile":"https://www.instagram.com/nehadugar17/","profession1":"Software Developer","profession2":"","email":"nehadugar17@gmail.com","password":"admin","profilephotolink":"https://lh3.googleusercontent.com/pw/AMWts8B9daw6MVuBLB_IHVgvyV16JL0jHqqj38_7RbTQjIstTOe6RmmkamR-ScosF_EIRalnHM5qKqm23CNMaKEE-vsOBAL5LQmKYq0aX3R87MFqZqJ6-l_xtRXXoP_qOxJFErILo1S9FpbpICBtfORqsEfMQw=w524-h695-s-no?authuser=0"},{"id":"","Name":"Himansh","age":26,"gender":"male","height":"5.10","weight":"68","bio":"Technology Analyst","nationality":"Indian","instaprofile":"https://www.instagram.com/himonshh/","profession1":"Software Developer","profession2":"","email":"him2696@gmail.com","password":"admin","profilephotolink":"https://lh3.googleusercontent.com/G43ORT6aUsmc6kH--sq8jkEp25kcHyHpQWrCbtvd48WvmT__SGHDWTeaNI5sgzZY45JsNeruIvm4gG5SyiuMfNoTzgJ87FGJi3BfRRa8MMwLGsge_lSqFq2Yem2Hpabr7E9ZvY0LQcQLHZCGHA719usP7IARFAjC5x3fkpCdrf8sHNFHplUcY4SMtblQqZsw9XSpZrxrjKAQDljvrRKptB0ZpgFlitXqGW6dKI91KlaGyk4NwOZ0f3p7rK4E-gPJdrWWsqayGTFU46lFYzytbL59wl0RCoLMPTTDurnlkuuZ7ZMbnUMsGUrrfxDPwfs3wu0iU8l_G-ttp7eDHAiPApWynWd-9Qt5IUKGZ4K_p4OmU3HKKvpDzsjd3bJZJpOPBGwDCNqXt-rhdhbMDyghaUAYqutwRJv8iKQhlSIoZXeSZ24Afd3X8e41Zhm21_I6CZhnWVXsn0nmifoEzahtXt7rCt1XhTYGfzqbw8pwylHt23yS1vTELjrda45iGE-aWD2Z2D385dcpCqcHvtzQYsok0xDdABTDCMUYLsh3elPl7K8cpqiRbh-YFlamYaSsdVOn-cr4LLtbIvM2eyvvBOB5Yn-0KJraRvxeBXiVZj6C8O-iiP3_SqqO6Aqzgw_8HqvHr3eb3a705EEZgHojApPqNYmeMO3ZSMhypcAVHWdY3Frv-h4-7BTVpUE18q-q7UDvvhn_5fslHWWvjfHt0kS3i1VOoF9U4_INB36Yhjyve3uYfLOKCXG2JwF_y2FCD-HziG3gujMWO82VboHBnFZA6uA47mFuW1ElduSuNPFM3Otj6MG0m-I2e8TAu1r32vWUjpz2c0kTiEJ2AWfRirEu8OrNESE73-n_eSjWNy-YNPrDaOI7xay_zRM9eC1zdzQ0EUdz75GHgY02rGhRFlLF-Z9l_LKK1iLr00cJHfA9S1-t=w521-h695-s-no?authuser=0"}]')
     }
 
     this.personForm = this.fb.group({
@@ -44,8 +44,8 @@ export class EntertainerComponentComponent {
       profession1: ['', Validators.required],
       profession2: [''],
       email: [''],
-      password : [''],
-      profilephotolink : [''],
+      password: [''],
+      profilephotolink: [''],
     });
   }
 
@@ -53,7 +53,7 @@ export class EntertainerComponentComponent {
 
   onSubmit() {
     this.userInformation = {
-      id:'',
+      id: '',
       Name: this.personForm.controls['name'].value,
       age: this.personForm.controls['age'].value,
       gender: this.personForm.controls['gender'].value,
@@ -64,18 +64,45 @@ export class EntertainerComponentComponent {
       instaprofile: this.personForm.controls['image'].value,
       profession1: this.personForm.controls['profession1'].value,
       profession2: this.personForm.controls['profession2'].value,
-      email :  this.personForm.controls['email'].value,
-      password :  this.personForm.controls['password'].value,
-      profilephotolink : this.personForm.controls['profilephotolink'].value
+      email: this.personForm.controls['email'].value,
+      password: this.personForm.controls['password'].value,
+      profilephotolink: this.personForm.controls['profilephotolink'].value
     }
-   
+
 
     this.userInformationList.push(this.userInformation);
     localStorage.setItem('UserInfoList', JSON.stringify(this.userInformationList));
     this.userInformationList = JSON.parse(localStorage.getItem('UserInfoList') || '{}');
-    
+
   }
-  
+
+  onDelete(obj: any) {
+    const index = this.userInformationList.indexOf(obj, 0);
+    if (index > -1) {
+      this.userInformationList.splice(index, 1);
+    }
+    localStorage.setItem('UserInfoList', JSON.stringify(this.userInformationList));
+  }
+
+  onEdit(obj: any)
+  {
+      this.personForm.patchValue({
+        name: obj['Name'],
+        age: obj['age'],
+        gender: obj['gender'],
+        height: obj['height'],
+        weight: obj['weight'],
+        bio: obj['bio'],
+        nationality: obj['nationality'],
+        image: obj['instaprofile'],
+        profession1: obj['profession1'],
+        profession2: obj['profession2'],
+        email: obj['email'],
+        password: obj['password'],
+        profilephotolink: obj['profilephotolink']
+      })
+       this.personForm.updateValueAndValidity();
+  }
 
   profession: string[] = [
     "Actor",
