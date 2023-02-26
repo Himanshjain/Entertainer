@@ -102,6 +102,8 @@ export class EntertainerComponentComponent {
         profilephotolink: obj['profilephotolink']
       })
        this.personForm.updateValueAndValidity();
+
+       this.onDelete(obj);
   }
 
   profession: string[] = [
