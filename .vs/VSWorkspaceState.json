@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\entertainer-component"
   ],
-  "SelectedNode": "\\C:\\Users\\hp\\source\\repos\\Github\\Entertainer\\UI",
+  "SelectedNode": "\\src\\app\\entertainer-component\\entertainer-component.component.ts",
   "PreviewInSolutionExplorer": false
 }

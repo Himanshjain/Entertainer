@@ -8,12 +8,14 @@ import { EntertainerComponentComponent } from './entertainer-component/entertain
 import { NavbarComponent } from './navbar/navbar.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DoctorComponent } from './doctor/doctor.component';
 @NgModule({
   declarations: [
     AppComponent,
     EntertainerComponentComponent,
     NavbarComponent,
-    CarouselComponent
+    CarouselComponent,
+    DoctorComponent
   ],
   imports: [
     BrowserModule,
